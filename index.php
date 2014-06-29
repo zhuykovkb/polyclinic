@@ -12,25 +12,18 @@
 
       $patientsPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $patientsPrepared = $patientsPdo
-        ->prepare(
-          'select * from patients'
-        );  
-      //object(PDOStatement)#2 (1) { ["queryString"]=> string(22) "select * from patients" } 
-      
-      $patientsPrepared->execute(); 
-      //object(PDOStatement)#2 (1) { ["queryString"]=> string(22) "select * from patients" }
-      
-      $list = $patientsPrepared->fetchAll();
-
-      //Add a condition to show the list of patients
-      require 'list.php';
-      
-      
-      if ($_SERVER['REQUEST_METHOD'=='GET']){
-        if (isset($_GET['patient_id'])) {
+      if ($_SERVER['REQUEST_METHOD']=='GET'){
+        //List all the patients
+        if ($_GET['action']=='list') {
+          require 'list.php';    
+        } 
+        //Show the full patient's data
+        //TODO:Add a check if the patient still exists
+        if (($_GET['action']=='show')
+          &&  (isset($_GET['patientId']))){
           require 'show.php';
         }
+        
       }
     ?>
   </body>

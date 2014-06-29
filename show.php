@@ -1,31 +1,16 @@
 <?php
-/*TODO show patient full data*/
-echo "Here should be a full patient's data";
+/*show patient full data*/
+$patientId = $_GET['patientId'];
+$queryPatientById = 'select * from patients where id=' . $patientId;
+$patientRecordPrepared = $patientsPdo->prepare($queryPatientById);
+$patientRecordPrepared->execute(); 
+$record = $patientRecordPrepared->fetch(PDO::FETCH_ASSOC);
 
-/*
-if (count($list)) {
-		echo '<h1>Patients List</h1>';
-		echo '<ul>';
-			foreach ($list as $row) {
-			echo '<li>' . 
-			$row['name'] . ' ' . $row['card_num'] . ' ' . $row['history'] . ' ' . $row['email'] . ' ' . $row['sex'] . 
-			'</li>';
-
-			echo '<a href="show/?patient_id'. $row['id'] .'"> .'
-		}
-		echo '</ul>';
-	} else {
-		echo "No rows returned.";
-	}
-*/
-
-/*if (count($list)) {
-		echo' <ul>';
-		foreach ($list as $row) {
-			echo '<li>' . '<a href="show/?patient_id'. $row['id'] .'"> .'$row['name'] . ' ' . $row['card_num'] . ' ' . $row['history'] . ' ' . $row['email'] . ' ' . $row['sex'] . '</li>';
-		}
-	} else {
-		echo "No rows returned.";
-	}
-*/
+echo '<h1>' . $record['name'] . '</h1>';
+echo '<img src="' . $record['photo'] . '">';
+echo '<h2>History:</h2><p>' . $record['history'] . '</p>';
+echo '<h3>Patient card number: ' . $record['card_num'] . '</h3>';
+if (!(empty($record['email']))) {
+	echo '<p>'. $record['email'] . '</p>';
+}
 ?>
