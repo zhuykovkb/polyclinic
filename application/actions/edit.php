@@ -69,7 +69,7 @@ if (!empty($_POST['card_num'])
     $newPatientPrepared = $patientsPdo->prepare($insertQuery);
     $newPatientPrepared->execute($newPatient);
 
-    echo "Done! New patient has been added.";
+    echo "Done! Changes are saved.";
     echo '<a href="/?action=show&patientId=' . $patientToEditId . '">Show patient`s record</a>';
 } else {
     if (!empty($_POST)) {
