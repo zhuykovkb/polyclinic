@@ -9,9 +9,9 @@ if (count($list)) {
 	echo '<ul>';
 		foreach ($list as $row) {
 
-		echo '<li>' . 
-		$row['name'] . ' ' . $row['card_num'] . ' ' . $row['history'] . ' ' . $row['email'] . ' ' . $row['sex'] . 
-		'</li>';
+		echo '<li>'
+		 . $row['name'] . ' (' . $row['sex'] . ') E-mail: ' . $row['email']
+		 . '<br/> Card #' . $row['card_num'] . '</li>';
 
 		echo $row['history'];
 
