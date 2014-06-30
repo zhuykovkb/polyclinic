@@ -7,10 +7,18 @@ $patientRecordPrepared->execute();
 $record = $patientRecordPrepared->fetch(PDO::FETCH_ASSOC);
 
 echo '<h1>' . $record['name'] . '</h1>';
-echo '<img src="' . $record['photo'] . '">';
-echo '<h2>History:</h2><p>' . $record['history'] . '</p>';
-echo '<h3>Patient card number: ' . $record['card_num'] . '</h3>';
-if (!(empty($record['email']))) {
-	echo '<p>'. $record['email'] . '</p>';
+if (!empty($record['photo'])) {
+			echo '<img src="'.$imagedir.'/'.$record['photo'].'"';
+		}
+if (!empty($record['history'])) {
+	echo '<h2>History:</h2><p>' . $record['history'] . '</p>';
 }
-?>
+echo '<h3>Patient card number: ' . $record['card_num'] . '</h3>';
+if (!empty($record['email'])) {
+	echo '<p>E-mail: '. $record['email'] . '</p>';
+}
+echo '<p>Sex: '. $record['sex'] . '</p>';
+if (!empty($record['insurance_num'])) {
+	echo '<p>Insurance number: '. $record['insurance_num'] . '</p>';
+}
+echo '<p>Native city id: '. $record['native_city_id'] . '</p>';
