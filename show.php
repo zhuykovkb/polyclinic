@@ -8,7 +8,7 @@ $record = $patientRecordPrepared->fetch(PDO::FETCH_ASSOC);
 
 echo '<h1>' . $record['name'] . '</h1>';
 if (!empty($record['photo'])) {
-			echo '<img src="'.$imagedir.'/'.$record['photo'].'"';
+			echo '<img src="'.$imagedir.'/'.$record['photo'].'"><br/>';
 		}
 if (!empty($record['history'])) {
 	echo '<h2>History:</h2><p>' . $record['history'] . '</p>';

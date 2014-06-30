@@ -7,14 +7,7 @@
   <body>
     <?php
       require 'mysqlConnect.php';
-      /*$patientsPdo = new PDO(
-          'mysql:host=localhost; dbname=polyclinic', 'root', '123321'
-      );
-      */
-
-      /*$patientsPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);*/
-
-      
+      require 'main.php';
       //List all the patients
       if ($_GET['action']=='list') {
         require 'list.php';    

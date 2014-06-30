@@ -1,9 +1,11 @@
 <form action="" enctype="multipart/form-data" method="post">
-	<p>*<input type="text" name="name" placeholder="Name"/></p>
-	<p>*<input type="text" name="sex" placeholder="Male/Female"/></p>
+	<p>*Name:<input type="text" name="name" placeholder="Name"/></p>
+	<p>*Sex:
+		<span>Male: <input type="radio" name="sex" value="male"/>  </span>
+		<span>Female: <input type="radio" name="sex" value="female"/>  </span>
+	</p>
 	<p>*Upload the photo</br><input type="file" name="photo"/></p>
 	<p>*<input type="text" name="card_num" placeholder="Patient Card Number"/></p>
-	
 	<p>*<input type="text" name="native_city_id" placeholder="City (id for now)"/></p>
 	<p><input type="text" name="insurance_num" placeholder="Insurance Number"/></p>
 	<p><input type="text" name="email" placeholder="E-mail"/></p>
@@ -27,7 +29,7 @@
 
 			$uploaded = move_uploaded_file($_FILES['photo']['tmp_name'], $upLoadFile);
 			if (!$uploaded) { 
-				var_dump($_FILES['error']);die();
+				var_dump($_FILES['error']);
 			}	
 		}
 
@@ -47,6 +49,10 @@
 		$newPatientPrepared->execute($newPatient);
 
 		echo "Done! New patient has been added.";
+
+		$newPatientId = $patientsPdo->lastInsertId();
+		var_dump($newPatientId);
+		echo '<a href="/?action=show&patientId=' . $newPatientId . '">Show patient`s record</a>';
 
 	} else {
 		if (!empty($_POST)) {
