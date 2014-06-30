@@ -29,7 +29,7 @@ if (!empty($_POST['card_num'])
 ) {
     //add uni check for card_num, insurance_num, email
     $uploaded = false;
-    if (!empty($_FILES['photo'])) {
+    if (!empty($_FILES['photo']['name'])) {
         $upLoadFile = $config['upLoadDir'] . '/' . basename($_FILES['photo']['name']);
         //TODO
         //$imagesrc = '.' . $imagedir . '/' . $_FILES['photo']['name'];

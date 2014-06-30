@@ -20,6 +20,7 @@ $list = $patientsListPrepared->fetchAll(PDO::FETCH_ASSOC);
             <?php echo $patient['history'] ?>
 
             <a href="?action=show&patientId=<?php echo $patient['id'] ?>">Show</a>
+            <a href="?action=edit&patientId=<?php echo $patient['id'] ?>">Edit</a>
 	    <?php } ?>
 	</ul>
 <?php } else { ?>

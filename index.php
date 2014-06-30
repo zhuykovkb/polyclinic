@@ -24,6 +24,7 @@ switch ($action) {
         require_once('application/actions/new.php');
         break;
     case 'edit':
+        require_once('application/actions/edit.php');
         break;
     case 'delete':
         break;
