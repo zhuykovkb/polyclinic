@@ -9,7 +9,7 @@
 
 require_once 'application/bootstrap.php';
 
-$action = isset($_GET['action']) ? $_GET['action'] : null;
+$action = isset($_GET['action']) ? $_GET['action'] : 'list';
 
 require_once('application/actions/main.php');
 
@@ -27,11 +27,17 @@ switch ($action) {
         require_once('application/actions/edit.php');
         break;
     case 'delete':
+        require_once('application/actions/delete.php');
         break;
     default:
         break;
 }
 
+/*
+ *валидация, sql injection protection, htmlescape, redirect
+ * РЕФАКТОРИНГ new & edit
+ */
 ?>
 </body>
 </html>
+

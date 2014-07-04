@@ -21,6 +21,7 @@ $list = $patientsListPrepared->fetchAll(PDO::FETCH_ASSOC);
 
             <a href="?action=show&patientId=<?php echo $patient['id'] ?>">Show</a>
             <a href="?action=edit&patientId=<?php echo $patient['id'] ?>">Edit</a>
+            <a href="?action=delete&patientId=<?php echo $patient['id'] ?>">Delete</a>
 	    <?php } ?>
 	</ul>
 <?php } else { ?>
