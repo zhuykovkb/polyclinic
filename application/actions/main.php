@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="style.css" />
 <h1>Polyclinic Patients Database</h1>
-<a href="?action=list">Patinents List</a>
-<a href="?action=new">Add a patient</a>
+<span class="main"><a class="list" href="?action=list">Patients List</a></span>
+<span class="main"><a class="add" href="?action=new">Add a patient</a></span>

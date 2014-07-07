@@ -1,0 +1,18 @@
+div{
+    width: 960px;
+}
+
+a{
+    text-decoration:none
+}
+.list{
+    background-color: green;
+    color: yellow;
+    font-size: 40px;
+}
+
+.add{
+    background-color: #FFB08B;
+    color: yellow;
+    font-size: 40px;
+}

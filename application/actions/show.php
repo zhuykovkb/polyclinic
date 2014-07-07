@@ -1,10 +1,13 @@
 <?php
 /*show patient full data*/
-$patientId = $_GET['patientId'];
-$queryPatientById = 'select * from patients where id=' . $patientId;
+$patientId = (!empty($_GET['patientId'])) ? $_GET['patientId'] : null;
+$queryPatientById = 'select * from patients where id=:id';
 $patientRecordPrepared = $patientsPdo->prepare($queryPatientById);
-$patientRecordPrepared->execute(); 
+$patientRecordPrepared->bindParam(':id', $patientId);
++$patientRecordPrepared->execute();
 $record = $patientRecordPrepared->fetch(PDO::FETCH_ASSOC);
+
+if ($record) {
 ?>
 
 <h1><?php echo $record['name'] ?></h1>
@@ -24,3 +27,7 @@ $record = $patientRecordPrepared->fetch(PDO::FETCH_ASSOC);
 	<p>Insurance number: <?php echo $record['insurance_num'] ?></p>
 <?php } ?>
 <p>Native city id: <?php echo $record['native_city_id'] ?></p>
+
+<?php } else {
+    echo "User not found";
+}
