@@ -8,7 +8,7 @@
 <?php
 
 require_once('application/bootstrap.php');
-require_once('application/views/userMessageHelper.php');
+require_once('application/views/flashMessage.php');
 require_once('application/views/menu.php');
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
