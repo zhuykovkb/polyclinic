@@ -5,6 +5,9 @@ div{
 a{
     text-decoration:none
 }
+.menu{
+    display:inline;
+}
 .list{
     background-color: green;
     color: yellow;

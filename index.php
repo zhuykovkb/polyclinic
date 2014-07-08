@@ -7,11 +7,11 @@
 <body>
 <?php
 
-require_once 'application/bootstrap.php';
+require_once('application/bootstrap.php');
+
+require_once('application/views/menu.php');
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
-
-require_once('application/actions/main.php');
 
 switch ($action) {
     case 'list':
@@ -34,8 +34,7 @@ switch ($action) {
 }
 
 /*
- *валидация, sql injection protection, htmlescape, redirect
- * РЕФАКТОРИНГ new & edit
+ * @TODO htmlescape, redirect (from new&edit to show, from delete to list), userMessageHelper,
  */
 ?>
 </body>
