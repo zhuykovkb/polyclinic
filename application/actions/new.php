@@ -50,18 +50,18 @@ if (!empty($_POST['name'])
         $newPatientPrepared = $patientsPdo -> prepare($insertQuery);
         $newPatientPrepared -> execute($newPatient);
 
-        echo '<p>Done! New patient has been added.</p>';
+        echo succeedCreation();
 
 
         $newPatientId = $patientsPdo -> lastInsertId();
         echo '<a href="/?action=show&patientId=' . $newPatientId . '">Show patient`s record</a>';
     } else {
-        echo '<p>Sorry, this user already exists</p>';
+        echo errorUserAlreadyExists();
     }
 } elseif (!empty($_POST)){
     if ($isValidMimeType) {
-        echo '<p>Empty input detected.<br/>Fill it.</p>';
+        echo errorEmptyInputDetected();
     } else {
-        echo '<p>U can upload only images</p>';
+        echo errorWrongMimeType();
     }
 }

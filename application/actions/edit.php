@@ -20,6 +20,7 @@ if ($patientData) {
         && checkMime($_FILES['photo']['type'])
     ) {
         $photo        = $patientData['photo'];
+
         $checkPatient = array(
             ":id"            => $patientToEditId,
             ":card_num"      => $_POST['card_num'],
@@ -69,13 +70,13 @@ if ($patientData) {
             header("Location: $link");
 
         } else {
-            echo '<p>Sorry, this user already exists</p>';
+            echo errorUserAlreadyExists();
         }
     } else {
         if (!empty($_POST)) {
-            echo "Empty input detected.<br/>Fill it.";
+            echo errorEmptyInputDetected();
         }
     }
 } else {
-    echo '<p>User not found</p>';
+    echo errorUserNotFound();
 }

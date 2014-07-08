@@ -10,5 +10,5 @@ $record = $patientRecordPrepared->fetch(PDO::FETCH_ASSOC);
 if ($record) {
     require_once('application/views/showPatient.php');
 } else {
-    echo "User not found";
+    echo errorUserNotFound();
 }
