@@ -12,12 +12,13 @@ if ($patientData) {
     require_once('application/views/editPatient.php');
     require_once('application/actions/fileUpload.php');
     require_once('application/actions/checkMime.php');
+    require_once('application/actions/isOldData.php');
 
-    if (!empty($_POST['card_num'])
-        && !empty($_POST['name'])
-        && !empty($_POST['sex'])
-        && !empty($_POST['native_city_id'])
-        && checkMime($_FILES['photo']['type'])
+    $validMime = (isset($_FILES['photo'])) ? checkMime($_FILES['photo']['type']) : true;
+
+    if (
+        !isOldData($patientData)
+	&& $validMime
     ) {
         $photo        = $patientData['photo'];
 

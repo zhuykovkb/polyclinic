@@ -6,8 +6,8 @@ require_once ('application/actions/checkMime.php');
 /*
  * @TODO for Kirill PHP Notice:  Undefined index: photo in /var/www/epic.local/www/data/application/actions/new.php on line 9
  */
-$isValidMimeType = checkMime($_FILES['photo']['type']);
-
+$isValidMimeType = isset($_FILES['photo']) ? checkMime($_FILES['photo']['type']) : true;
+var_dump($isValidMimeType);
 if (!empty($_POST['name'])
     && !empty($_POST['card_num'])
     && !empty($_POST['sex'])
