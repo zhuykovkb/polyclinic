@@ -15,7 +15,7 @@ if ($patientData) {
     require_once ('application/actions/isOldData.php');
     
     $validMime = isset($_FILES['photo']) ? checkMime($_FILES['photo']['type']) : 1;
-    echo "Mime --> " . $validMime . "<br />";
+    
     if (!isOldData($patientData) && $validMime) {
         $photo = $patientData['photo'];
         $checkPatient = array(
@@ -24,11 +24,14 @@ if ($patientData) {
             ":insurance_num" => !empty($_POST['insurance_num']) ? $_POST['insurance_num'] : null,
             ":email" => !empty($_POST['email']) ? $_POST['email'] : null
         );
-        $checkQuery = "select card_num, insurance_num, email from patients
+	
+	$checkQuery = "select card_num, insurance_num, email from patients
                             where (card_num=:card_num OR insurance_num=:insurance_num OR email=:email) AND id != :id";
-        $checkUnique = $patientsPdo->prepare($checkQuery);
+	
+	$checkUnique = $patientsPdo->prepare($checkQuery);
         $checkUnique->execute($checkPatient);
-        if (!$result = $checkUnique->fetchAll())
+	
+	if (!$result = $checkUnique->fetchAll())
           {
             $img = fileUpload($config['upLoadDir']);
             if (!$img)
@@ -38,7 +41,8 @@ if ($patientData) {
                     var_dump($_FILES['error']);
                   }
               }
-            $newPatient = array(
+	
+	    $newPatient = array(
                 ":id" => $patientToEditId,
                 ":card_num" => $_POST['card_num'],
                 ":name" => $_POST['name'],
@@ -48,7 +52,8 @@ if ($patientData) {
                 ":email" => !empty($_POST['email']) ? $_POST['email'] : null,
                 ":photo" => $img ? $img : $photo
             );
-            $insertQuery = "update patients
+	
+	    $insertQuery = "update patients
                                   set card_num     = :card_num,
                                     name           = :name,
                                     sex            = :sex,
@@ -57,7 +62,8 @@ if ($patientData) {
                                     email          = :email,
                                     photo          = :photo
                                   where id = :id";
-            $newPatientPrepared = $patientsPdo->prepare($insertQuery);
+	
+	    $newPatientPrepared = $patientsPdo->prepare($insertQuery);
             $newPatientPrepared->execute($newPatient);
             $link = '?action=show&patientId=' . $patientToEditId;
             header("Location: $link");
@@ -87,7 +93,8 @@ if ($patientData) {
                 $newPatientPrepared->execute($newPhoto);
                 $link = '?action=show&patientId=' . $patientToEditId;
                 header("Location: $link");
-	}else{
+    
+    }else{
         if (!empty($_POST))
           {
             echo errorEmptyInputDetected();
