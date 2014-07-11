@@ -6,7 +6,7 @@
 
     <p>*Sex: <br/>
         <span>Male:
-            <input type="radio" name="sex" value="male"/>
+            <input type="radio" name="sex" value="male" checked/>
         </span>
         <span>Female:
             <input type="radio" name="sex" value="female"/>
@@ -18,7 +18,7 @@
         <input type="file" name="photo"/>
     </p>
 
-    <p>*Patient`s card number (up to 6 characters, must be unique):
+    <p>*Patient`s card number (up to 6 characters, necessary to fill, unique):
         <br/>
         <input type="text" name="card_num" placeholder="Patient Card Number"/>
     </p>
@@ -28,12 +28,12 @@
         <input type="text" name="native_city_id" placeholder="City (id for now)"/>
     </p>
 
-    <p>Insurance number (must be unique):
+    <p>Insurance number (up to 6 characters, necessary to fill, unique):
         <br/>
         <input type="text" name="insurance_num" placeholder="Insurance Number"/>
     </p>
 
-    <p>E-mail (must be unique):
+    <p>E-mail (necessary to fill, unique):
         <br/>
         <input type="text" name="email" placeholder="E-mail"/>
     </p>
