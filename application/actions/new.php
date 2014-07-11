@@ -3,17 +3,14 @@
 require_once ('application/views/newPatient.php');
 require_once ('application/actions/fileUpload.php');
 require_once ('application/actions/checkMime.php');
-/*
- * @TODO for Kirill PHP Notice:  Undefined index: photo in /var/www/epic.local/www/data/application/actions/new.php on line 9
- */
-$isValidMimeType = isset($_FILES['photo']) ? checkMime($_FILES['photo']['type']) : true;
-var_dump($isValidMimeType);
-if (!empty($_POST['name'])
-    && !empty($_POST['card_num'])
-    && !empty($_POST['sex'])
-    && !empty($_POST['native_city_id'])
-    && $isValidMimeType
+require_once ('application/actions/isOldData.php');
+
+$isValidMime = isset($_FILES['photo']) ? checkMime($_FILES['photo']['type']) : true;
+
+if (isOldData
+    && isValidMime
 ) {
+	//@TODO not null
     $checkPatient = array(
         ":card_num"      => $_POST['card_num'],
         ":insurance_num" => !empty($_POST['insurance_num']) ? $_POST['insurance_num'] : null,
